@@ -8,12 +8,22 @@
     //Peça para o usuário informar o preço do Kg ou da Unidade de cada um dos produtos que comprou (citados acima) e peça também para o usuário informar quanto dinheiro possui para realizar a compra.
     //Calcule o custo total dos alimentos e verifique se há dinheiro suficiente para realizar a compra, indicando se sobrará ou faltará dinheiro, e também apresentando qual foi a quantia que sobrou ou faltou para realizar a compra. Apresente também na tela o valor total da compra.
 
-    //ENTRADA
-
-
-    //PROCESSAMENTO
-
-
-    //SAÍDA
+    const mamao = Number(prompt("Qual é o preço da unidade do mamão?").trim().replace(",", "."));
+    const melancia = Number(prompt("Qual é o preço do kg da melancia?").trim().replace(",", "."));
+    const abacate = Number(prompt("Qual é o preço da unidade do abacate?").trim().replace(",", "."));
+    const cebola = Number(prompt("Qual é o preço do kg da cebola?").trim().replace(",", "."));
+    const dinheiro = Number(prompt("Qual quantia de dinheiro você possúi?").trim().replace(",", "."));
+    const total = mamao + melancia + abacate + cebola
+    let troco = 0
+    let falta = total - dinheiro
+    if (isNaN(mamao) || isNaN(melancia) || isNaN(cebola) || isNaN(abacate) || isNaN(dinheiro)) alert("Informe apenas números.");
+    else {
+        if (total > dinheiro) alert("Você não tem dinheiro suficiente para realizar a compra, faltam R$" + falta);
+        else if (dinheiro == total) alert("Você possúi o dinheiro exato para realizar a compra.");
+        else if (dinheiro > total) {
+            troco = dinheiro - total;
+            alert(`Você possúi dinheiro para realizar a compra e sobrou R$${troco.toFixed(2)}.`);
+        }
+    }
 
 </script>

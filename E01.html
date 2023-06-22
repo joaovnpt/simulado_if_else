@@ -5,12 +5,22 @@
     //Considere que, se o aluno ajudado obteve nota maior do que o aluno que ajudou (TUTOR), o programa apresentará na tela a mensagem "CRIA MAIOR QUE O CRIADOR" e também apresentará a nota do aluno ajudado.
     //Contudo, caso o aluno que ajudou (TUTOR) obteve maior nota, bonifique-o com um adicional de 10% da nota do aluno ajudado, e o programa apresentará a mensagem "CONTINUE ENSINANDO!" e também apresentará a nota final do aluno que ajudou (TUTOR).
 
-    //ENTRADA
-
-
-    //PROCESSAMENTO
-
-
-    //SAÍDA
+    const notatutor = Number(prompt("Informe a nota do tutor no terceiro trimestre:").trim().replace(",", "."));
+    const notaajudado = Number(prompt("Informe a nota do aluno ajudado no terceiro trimestre:").trim().replace(",", "."));
+    let notatutornova = 0;
+    if ((isNaN(notatutor) || isNaN(notaajudado)) && notaajudado >= 10 && notatutor >= 10) alert("Informe apenas números de 1 a 10.");
+    else {
+        if (notaajudado > notatutor) alert("CRIA MAIOR QUE O CRIADOR. (Nota " + notaajudado + ")");
+        else if (notatutor >= notaajudado) {
+            if (notatutor < 10) {
+                notatutornova = notatutor + notaajudado * 0.10
+                alert(`Continue ensinando, sua nova nota é ${notatutornova}, e a do seu aluno ajudado é ${notaajudado}`);
+            }
+            else {
+                notatutornova = notatutor
+                alert(`Continue ensinando, sua nova nota é ${notatutornova}, e a do seu aluno ajudado é ${notaajudado}`);
+            }
+        }
+    }
 
 </script>

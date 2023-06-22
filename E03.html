@@ -1,17 +1,40 @@
 <script>
     //PROBLEMA: Viajar para algum lugar
     //Peça para o usuário informar para qual estado deseja realizar a viagem. (Rio Grande do Sul-RS ou Minas Gerais-MG). Peça também para informar quantos dias ficará em viagem. O usuário também deverá informar "quantos dinheiros" (R$) possui para gastar na viagem.
-    
+
     //Considere que o custo diário de viagem para "RS" será de R$ 180,00 (180) e o custo diário de viagem para "MG" será de R$ 210,00 (210).
-    
+
     //Calcule se o usuário possui dinheiro suficiente para realizar a viagem para o destino que pretende. Se o usuário puder viajar, o programa apresentará a mensagem "Boa viagem" e quantos dias poderá ficar no destino, além de qual será o custo da viagem. Caso não possa viajar o programa apresentará a mensagem "Sem Férias" e também apresentará "quantos dinheiros" (R$) estão faltando para realizar a viagem.
 
-    //ENTRADA
+    const lugar = prompt("Para qual lugar deseja viajar, RS ou MG?").trim().toUpperCase();
+    const dias = Number(prompt("Quantos dias ficará no lugar?").trim());
+    const dinheiro = Number(prompt("Quanto (R$) você possúi para gastar na viagem?").trim().replace(".", ","));
 
-
-    //PROCESSAMENTO
-
-
-    //SAÍDA
+    if (isNaN(dias) || isNaN(dinheiro)) alert("Informe apenas números para dinheiro e quantidade de dias.");
+    else {
+        if (lugar === "RS") {
+            let custodiario = 180;
+            let diaspossiveis = dinheiro / 180;
+            const custo = 180 * Number(diaspossiveis);
+            if (diaspossiveis < 1) alert(`Não será possível viajar, faltam ${180 - dinheiro} reais para poder ficar um dia.`);
+            else {
+                if (dinheiro >= custo) alert(`Boa viagem, você poderá ficar ${Math.round(diaspossiveis)} dias`);
+                else if (dinheiro < 180) alert(`Não será possível viajar, faltam ${custo - dinheiro} reais.`);
+            }
+        }
+        else if (lugar === "MG") {
+            let custodiario = 210;
+            let diaspossiveis = dinheiro / 210;
+            const custo = 210 * Number(diaspossiveis);
+            if (diaspossiveis < 1) alert(`Não será possível viajar, faltam ${210 - dinheiro} reais para poder ficar um dia.`);
+            else {
+                if (dinheiro >= custo) alert(`Boa viagem, você poderá ficar ${Math.round(diaspossiveis)} dias`);
+                else if (dinheiro < 210) alert(`Não será possível viajar, faltam ${custo - dinheiro} reais.`);
+            }
+        }
+        else {
+            alert("Informe apenas 'MG' ou 'RS' para o lugar.");
+        }
+    }
 
 </script>
